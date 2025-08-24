@@ -8,6 +8,9 @@
         <p>{{ student.department }}</p>
       </div>
     </div>
+    <button @click="deleteStudent">Update Name</button>
+    <p>isActive: {{ isActiveLocal }}</p>
+    <button @click="isActiveLocal = !isActive">Toggle Active</button>
   </div>
 </template>
 <style scoped>
@@ -37,12 +40,23 @@ div {
 export default {
   name: "MyCard",
   data() {
-    return {};
+    return {
+      studentDeleted: this.students,
+      isActiveLocal: this.isActive,
+    };
   },
   props: {
     students: {
       type: Array,
       required: true,
+    },
+    isActive: {
+      type: Boolean,
+    },
+  },
+  methods: {
+    deleteStudent() {
+      this.studentDeleted.shift();
     },
   },
 };

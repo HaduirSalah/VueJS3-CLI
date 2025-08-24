@@ -2,6 +2,7 @@
   <div class="main">
     <h2>this is my main view page</h2>
     <MyCard :students="students" />
+    <MyCard :students="students" />
   </div>
 </template>
 
@@ -12,6 +13,8 @@ export default {
   name: "MainView",
   data() {
     return {
+      // Reference Data type is Array or object
+      // Primitive Data type is boolean or number or string
       students: [
         {
           id: 1,
