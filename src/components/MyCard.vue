@@ -11,6 +11,7 @@
     <button @click="deleteStudent">Update Name</button>
     <p>isActive: {{ isActiveLocal }}</p>
     <button @click="isActiveLocal = !isActive">Toggle Active</button>
+    <button @click="changeActive"></button>
   </div>
 </template>
 <style scoped>
@@ -58,6 +59,9 @@ export default {
   methods: {
     deleteStudent() {
       this.studentDeleted.shift();
+    },
+    changeActive() {
+      this.$emit("");
     },
   },
 };

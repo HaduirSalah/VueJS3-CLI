@@ -1,8 +1,16 @@
 <template>
   <div class="main">
     <h2>this is my main view page</h2>
-    <MyCard :students="students" :isActive="isActive" />
-    <MyCard :students="students" :isActive="isActive" />
+    <MyCard
+      :students="students"
+      :isActive="isActive"
+      @updateActive="changeActive"
+    />
+    <MyCard
+      :students="students"
+      :isActive="isActive"
+      @updateActive="changeActive"
+    />
   </div>
 </template>
 
@@ -43,6 +51,11 @@ export default {
   },
   components: {
     MyCard,
+  },
+  methods: {
+    changeActive() {
+      this.isActive = !this.isActive;
+    },
   },
 };
 </script>
