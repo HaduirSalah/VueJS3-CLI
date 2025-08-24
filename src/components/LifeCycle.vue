@@ -3,7 +3,7 @@
     <h2>hi this is life cycle Hooks component</h2>
     <p>Name: {{ name }}</p>
     <p>Age: {{ age }}</p>
-    <button v-on:click="age++">Increase Age</button>
+    <!-- <button v-on:click="age++">Increase Age</button> -->
     <button @click="age++">Increase Age</button>
   </div>
 </template>
