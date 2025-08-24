@@ -1,8 +1,8 @@
 <template>
   <div class="main">
     <h2>this is my main view page</h2>
-    <MyCard :students="students" />
-    <MyCard :students="students" />
+    <MyCard :students="students" :isActive="isActive" />
+    <MyCard :students="students" :isActive="isActive" />
   </div>
 </template>
 
@@ -38,6 +38,7 @@ export default {
           department: "Physics",
         },
       ],
+      isActive: true,
     };
   },
   components: {

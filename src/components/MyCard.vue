@@ -52,6 +52,7 @@ export default {
     },
     isActive: {
       type: Boolean,
+      required: true,
     },
   },
   methods: {
