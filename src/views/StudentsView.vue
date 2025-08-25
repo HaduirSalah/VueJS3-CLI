@@ -98,6 +98,7 @@
   </div>
 </template>
 <script>
+import studentsMixin from "../mixins/studentMixin";
 export default {
   name: "StudentsView",
   directives: {
@@ -122,6 +123,7 @@ export default {
       changeId: "",
     };
   },
+  mixins: [studentsMixin],
   methods: {
     addSport() {
       if (this.sport.trim() !== "") {
@@ -129,14 +131,7 @@ export default {
         this.sport = "";
       }
     },
-    async getStudents() {
-      await fetch("https://course-backend.onrender.com/")
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          this.studentsList = data;
-        });
-    },
+
     async addStudent() {
       const requestData = {
         method: "POST",
