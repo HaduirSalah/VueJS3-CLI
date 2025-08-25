@@ -10,7 +10,7 @@
           id="userName"
           required
         />
-        <p>userName is: {{ student.name }}</p>
+        <p>userName is: {{ student.userName }}</p>
       </div>
       <div>
         <label for="lastName">lastName:</label>
@@ -24,7 +24,7 @@
       </div>
       <div>
         <label for="age">Age:</label>
-        <input type="age" v-model.lazy="student.age" id="age" />
+        <input type="number" v-model.lazy="student.age" id="age" />
         <p>Age is: {{ student.age }}</p>
       </div>
       <div>
@@ -61,6 +61,7 @@
       </div>
 
       <div class="radio">
+        <h3>Gender:</h3>
         <input
           type="radio"
           v-model.lazy="student.gender"
