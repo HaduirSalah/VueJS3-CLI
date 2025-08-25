@@ -1,6 +1,8 @@
 <template>
   <div class="students">
-    <h2>Students Form</h2>
+    <h2 v-maxSize="30" v-theme="'light'" v-changeColor="'green'">
+      Students Form
+    </h2>
     <form @submit.prevent="addStudent()">
       <div class="name">
         <label for="name">Name:</label>
