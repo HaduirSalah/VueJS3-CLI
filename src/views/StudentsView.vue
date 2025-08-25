@@ -1,5 +1,5 @@
 <template>
-  <div class="students">
+  <div class="students" v-containerWidth="50">
     <h2 v-maxSize="30" v-theme="'light'" v-changeColor="'green'">
       Students Form
     </h2>
@@ -100,6 +100,12 @@
 <script>
 export default {
   name: "StudentsView",
+  directives: {
+    containerWidth(el, order) {
+      el.style.width = order.value + "%";
+      el.style.margin = "0 auto";
+    },
+  },
   data() {
     return {
       sport: "",
