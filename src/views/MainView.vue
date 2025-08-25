@@ -31,17 +31,36 @@
       </template>
     </slot-component> -->
     <!-- ex3 -->
-    <slot-component :name="name">
-      <template #slot-header>
-        <h3 style="color: red">This is a custom header</h3>
-      </template>
-      <template #slot-inputs>
-        <input type="text" placeholder="Enter your name" />
-      </template>
-      <template #slot-actions>
-        <button type="submit">Submit</button>
-      </template>
-    </slot-component>
+
+    <KeepAlive>
+      <slot-component :name="name" v-if="!isComponentTwoVisible">
+        <template #slot-header>
+          <h3 style="color: red">This is a slot header one</h3>
+        </template>
+        <template #slot-inputs>
+          <input type="text" placeholder="Enter your name" />
+        </template>
+        <template #slot-actions>
+          <button type="submit">Submit</button>
+        </template>
+      </slot-component>
+    </KeepAlive>
+    <KeepAlive>
+      <slot-component :name="name" v-if="isComponentTwoVisible">
+        <template #slot-header>
+          <h3 style="color: gainsboro">This is a slot header two</h3>
+        </template>
+        <template #slot-inputs>
+          <input type="text" placeholder="Enter your name" />
+        </template>
+        <template #slot-actions>
+          <button type="submit">Submit</button>
+        </template>
+      </slot-component>
+    </KeepAlive>
+    <button @click="isComponentTwoVisible = !isComponentTwoVisible">
+      Toggle Component
+    </button>
   </div>
 </template>
 
@@ -79,6 +98,7 @@ export default {
       ],
       isActive: true,
       name: "dera",
+      isComponentTwoVisible: false,
     };
   },
   components: {
