@@ -1,10 +1,15 @@
 <template>
   <div>
     <h2>My Form</h2>
-    <form @submit.prevent>
+    <form @submit.prevent="addStudent()">
       <div>
         <label for="userName">userName:</label>
-        <input type="text" v-model.lazy="student.name" id="userName" required />
+        <input
+          type="text"
+          v-model.lazy="student.userName"
+          id="userName"
+          required
+        />
         <p>userName is: {{ student.name }}</p>
       </div>
       <div>
@@ -95,6 +100,32 @@
 
       <button type="submit">Submit</button>
     </form>
+
+    <div class="students" v-if="students.length > 0">
+      <h3>Students</h3>
+      <ul>
+        <li v-for="(student, i) in students" :key="i">
+          <p>Name: {{ student.userName }} {{ student.lastName }}</p>
+          <p>Age: {{ student.age }}</p>
+          <p>Email: {{ student.email }}</p>
+          <p>City: {{ student.city }}</p>
+          <p>Bio: {{ student.bio }}</p>
+          <p>
+            Sports:
+            <!-- <span v-if="student.sports.football"> Football </span>
+            <br />
+            <span v-if="student.sports.basketball"> Basketball </span>
+            <br />
+            <span v-if="student.sports.tennis"> Tennis </span> -->
+            <strong>
+              <span v-for="(value, key, i) in student.sports" :key="i">
+                <span v-if="value"> {{ key }} <br /></span>
+              </span>
+            </strong>
+          </p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -103,6 +134,7 @@ export default {
   name: "MyForm",
   data() {
     return {
+      students: [],
       student: {
         userName: "",
         lastName: "",
@@ -120,6 +152,26 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    addStudent() {
+      console.log(this.student);
+      this.students.push(this.student);
+      console.log(this.students);
+      this.student = {
+        userName: "",
+        lastName: "",
+        email: "",
+        age: null,
+        sports: {
+          football: false,
+          basketball: false,
+          tennis: false,
+        },
+        gender: "",
+        city: "",
+        bio: "",
+      };
+    },
+  },
 };
 </script>
