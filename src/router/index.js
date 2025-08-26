@@ -29,6 +29,11 @@ const routes = [
     path: "/computed",
     component: () => import("@/views/ComputedView.vue"),
   },
+  {
+    name: "ProfileView",
+    path: "/profile",
+    component: () => import("@/views/ProfileView.vue"),
+  },
 ];
 
 const router = createRouter({
