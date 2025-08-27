@@ -65,5 +65,18 @@ const router = createRouter({
   // createWebHashHistory(),
   routes,
 });
+router.beforeEach((to, from, next) => {
+  // console.log("to beforeEach", to);
+  // console.log("from beforeEach", from);
+  // if (to.name === "ProfileView") {
+  //   return next("/home");
+  // }
+  document.title = to.meta.title;
+  next();
+});
+router.afterEach((to, from) => {
+  console.log("to afterEach", to);
+  console.log("from afterEach", from);
+});
 
 export default router;
