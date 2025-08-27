@@ -51,7 +51,7 @@ const routes = [
   },
   {
     name: "ProfileView",
-    path: "/profile",
+    path: "/profile/:userId",
     component: () => import("@/views/ProfileView.vue"),
     meta: {
       title: "Profile",

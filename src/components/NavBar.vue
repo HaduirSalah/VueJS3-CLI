@@ -7,7 +7,12 @@
       <ul>
         <li v-for="link in links" :key="link.name">
           <!-- <router-link :to="link.path">{{ link.meta.title }}</router-link> -->
-          <router-link :to="{ name: link.name }">{{
+          <router-link
+            v-if="link.name == 'ProfileView'"
+            :to="{ name: link.name, params: { userId: 4 } }"
+            >{{ link.meta.title }}</router-link
+          >
+          <router-link v-else :to="{ name: link.name }">{{
             link.meta.title
           }}</router-link>
         </li>
