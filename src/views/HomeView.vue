@@ -63,7 +63,8 @@ export default {
     routerFunction() {
       // this.$router.push("/about");
       // this.$router.push({ name: "AboutPage" });
-      this.$router.go(-1); // -1 back , 1 forward
+      // this.$router.go(-1); // -1 back , 1 forward
+      this.$router.replace({ name: "AboutPage" });
     },
   },
   mounted() {
