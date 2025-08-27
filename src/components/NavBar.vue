@@ -5,10 +5,12 @@
     </div>
     <div class="links">
       <ul>
-        <li><router-link to="/home">Home</router-link></li>
-        <li><router-link to="/about">About</router-link></li>
-        <li><router-link to="/contact">Contact</router-link></li>
-        <li><router-link to="/Profile">Profile</router-link></li>
+        <li v-for="link in links" :key="link.name">
+          <!-- <router-link :to="link.path">{{ link.meta.title }}</router-link> -->
+          <router-link :to="{ name: link.name }">{{
+            link.meta.title
+          }}</router-link>
+        </li>
       </ul>
     </div>
     <div class="btns">
@@ -20,12 +22,22 @@
 
 <script>
 export default {
+  name: "NavBar",
   data() {
     return {
       logo: "Logo",
       name: "NavBar",
-      links: ["Home", "About", "Contact", "Blog", "Careers"],
+      links: [],
     };
+  },
+  methods: {
+    getRoutes() {
+      console.log(this.$router.options.routes);
+      this.links = this.$router.options.routes;
+    },
+  },
+  mounted() {
+    this.getRoutes();
   },
 };
 </script>

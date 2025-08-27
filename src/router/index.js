@@ -8,6 +8,10 @@ const routes = [
     name: "MainView",
     path: "/",
     component: MainView,
+    meta: {
+      title: "Main",
+      description: "This is main page",
+    },
   },
   {
     name: "AboutPage",
@@ -16,28 +20,43 @@ const routes = [
     meta: {
       title: "About Us",
       description: "This is about us page",
-      age: 30,
     },
   },
   {
     name: "HomePage",
     path: "/home",
     component: HomePage,
+    meta: {
+      title: "Home",
+      description: "This is home page",
+    },
   },
   {
     name: "StudentsView",
     path: "/students",
     component: () => import("@/views/StudentsView.vue"),
+    meta: {
+      title: "Students",
+      description: "This is students page",
+    },
   },
   {
     name: "ComponentsView",
     path: "/computed",
     component: () => import("@/views/ComputedView.vue"),
+    meta: {
+      title: "Computed",
+      description: "This is computed page",
+    },
   },
   {
     name: "ProfileView",
     path: "/profile",
     component: () => import("@/views/ProfileView.vue"),
+    meta: {
+      title: "Profile",
+      description: "This is profile page",
+    },
   },
 ];
 
