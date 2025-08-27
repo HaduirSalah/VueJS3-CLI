@@ -68,8 +68,16 @@ export default {
     },
   },
   mounted() {
-    console.log("HomeView Mounted", this.$router.hasRoute("aboutPage")); // Output: false
-    if (this.$router.hasRoute("AboutPage")) {
+    // console.log("HomeView Mounted", this.$router.hasRoute("aboutPage")); // Output: false
+    // if (this.$router.hasRoute("AboutPage")) {
+    //   console.log("Route Exists"); // Output: Route Exists
+    // } else {
+    //   console.log("Route Not Exists");
+    // }
+    console.log(this.$route);
+    console.log(this.$route.name);
+    console.log(this.$router);
+    if (this.$router.hasRoute(this.$route.name)) {
       console.log("Route Exists"); // Output: Route Exists
     } else {
       console.log("Route Not Exists");
