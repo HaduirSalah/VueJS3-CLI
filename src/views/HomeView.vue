@@ -68,7 +68,12 @@ export default {
     },
   },
   mounted() {
-    console.log("HomeView Mounted", this.$router);
+    console.log("HomeView Mounted", this.$router.hasRoute("aboutPage")); // Output: false
+    if (this.$router.hasRoute("AboutPage")) {
+      console.log("Route Exists"); // Output: Route Exists
+    } else {
+      console.log("Route Not Exists");
+    }
   },
 };
 </script>
