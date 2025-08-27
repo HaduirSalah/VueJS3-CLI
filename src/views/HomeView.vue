@@ -1,6 +1,12 @@
 <template>
   <div>
     <h2>Home Page (View)</h2>
+    <button @click="$router.push('/about')">Go to About Page</button>
+    <button @click="$router.push({ name: 'AboutPage' })">
+      <!-- Best Practice -->
+      Go to About Page
+    </button>
+
     <!-- <p>Message from Child: {{ message }}</p> -->
     <!-- استخدمنا الابن -->
     <!-- <Child @childClicked="getMessageFromChild" /> -->
@@ -53,6 +59,9 @@ export default {
     getMessageFromChild(msg) {
       this.message = msg;
     },
+  },
+  mounted() {
+    console.log("HomeView Mounted", this.$router);
   },
 };
 </script>
