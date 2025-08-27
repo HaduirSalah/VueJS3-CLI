@@ -13,6 +13,11 @@ const routes = [
     name: "AboutPage",
     path: "/about",
     component: AboutPage,
+    meta: {
+      title: "About Us",
+      description: "This is about us page",
+      age: 30,
+    },
   },
   {
     name: "HomePage",
