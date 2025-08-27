@@ -1,7 +1,8 @@
 <template>
   <div>
     <h2>Home Page (View)</h2>
-    <button @click="$router.push('/about')">Go to About Page</button>
+    <button @click="routerFunction()">Go to About Page</button>
+    <button @click="routerFunction">Go to About Page</button>
     <button @click="$router.push({ name: 'AboutPage' })">
       <!-- Best Practice -->
       Go to About Page
@@ -58,6 +59,11 @@ export default {
   methods: {
     getMessageFromChild(msg) {
       this.message = msg;
+    },
+    routerFunction() {
+      // this.$router.push("/about");
+      // this.$router.push({ name: "AboutPage" });
+      this.$router.go(-1); // -1 back , 1 forward
     },
   },
   mounted() {
