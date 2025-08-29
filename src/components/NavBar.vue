@@ -9,7 +9,11 @@
           <!-- <router-link :to="link.path">{{ link.meta.title }}</router-link> -->
           <router-link
             v-if="link.name == 'ProfileView'"
-            :to="{ name: link.name, params: { userId: 4 } }"
+            :to="{
+              name: link.name,
+              params: { userId: 4, userName: 'Hadeer Salah' },
+              query: { age: 26, gender: 'Female', grade: 'A+' },
+            }"
             >{{ link.meta.title }}</router-link
           >
           <router-link v-else :to="{ name: link.name }">{{
