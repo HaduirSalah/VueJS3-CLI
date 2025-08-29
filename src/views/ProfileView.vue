@@ -8,7 +8,28 @@
     <h2>User Details query</h2>
     <p>Age: {{ $route.query.age }}</p>
     <p>Gender: {{ $route.query.gender }}</p>
-    <p>Gender: {{ $route.query.grade }}</p>
+    <p>Grade: {{ $route.query.grade }}</p>
+    <hr />
+    <ul
+      style="
+        list-style-type: none;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      "
+    >
+      <li>
+        <router-link :to="{ name: 'MyLearnings' }">My Learnings</router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'MyWishlist' }">My Wishlist</router-link>
+      </li>
+    </ul>
+    <hr />
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
