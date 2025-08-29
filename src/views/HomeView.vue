@@ -1,18 +1,18 @@
 <template>
   <div>
     <h2>Home Page (View)</h2>
-    <button @click="routerFunction()">Go to About Page</button>
-    <button @click="routerFunction">Go to About Page</button>
-    <button @click="$router.push({ name: 'AboutPage' })">
-      <!-- Best Practice -->
+    <!-- <button @click="routerFunction()">Go to About Page</button>
+    <button @click="routerFunction">Go to About Page</button> -->
+    <!-- Best Practice -->
+    <!-- <button @click="$router.push({ name: 'AboutPage' })">
       Go to About Page
-    </button>
+    </button> -->
 
     <!-- <p>Message from Child: {{ message }}</p> -->
     <!-- استخدمنا الابن -->
     <!-- <Child @childClicked="getMessageFromChild" /> -->
     <!-- <LifeCycle /> -->
-    <MyForm />
+    <!-- <MyForm /> -->
     <div class="students-view" v-if="studentsList.length > 0">
       <h3>Students</h3>
       <ul>
@@ -34,6 +34,20 @@
               </span>
             </strong>
           </p>
+          <button
+            v-on:click="
+              goToProfile(
+                'ProfileView',
+                student.id,
+                student.name,
+                student.age,
+                student.gender,
+                student.grade
+              )
+            "
+          >
+            View Profile
+          </button>
           <hr />
         </li>
       </ul>
@@ -42,14 +56,14 @@
 </template>
 
 <script>
-import MyForm from "../components/MyForm.vue";
+// import MyForm from "../components/MyForm.vue";
 import studentsMixin from "../mixins/studentMixin.js";
 export default {
   name: "HomeView",
   mixins: [studentsMixin],
   components: {
     // Child, LifeCycle,
-    MyForm,
+    // MyForm,
   },
   data() {
     return {
@@ -57,6 +71,17 @@ export default {
     };
   },
   methods: {
+    goToProfile(viewName, id, userName, age, gender, grade) {
+      this.$router.push({
+        name: viewName,
+        params: { userId: id, userName: userName },
+        query: {
+          age: age,
+          gender: gender,
+          grade: grade,
+        },
+      });
+    },
     getMessageFromChild(msg) {
       this.message = msg;
     },
