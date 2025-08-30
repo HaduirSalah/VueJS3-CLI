@@ -7,18 +7,24 @@
       <ul>
         <li v-for="link in links" :key="link.name">
           <!-- <router-link :to="link.path">{{ link.meta.title }}</router-link> -->
+
           <router-link
-            v-if="link.name == 'ProfileView'"
+            v-if="link.name !== 'ProfileView' && link.name !== 'NotFound'"
+            :to="{ name: link.name }"
+          >
+            {{ link.meta.title }}
+          </router-link>
+
+          <router-link
+            v-else
             :to="{
               name: link.name,
               params: { userId: 4, userName: 'Hadeer Salah' },
               query: { age: 26, gender: 'Female', grade: 'A+' },
             }"
-            >{{ link.meta.title }}</router-link
           >
-          <router-link v-else :to="{ name: link.name }">{{
-            link.meta.title
-          }}</router-link>
+            {{ link.meta.title }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -42,7 +48,9 @@ export default {
   methods: {
     getRoutes() {
       console.log(this.$router.options.routes);
-      this.links = this.$router.options.routes;
+      const allRoutes = this.$router.options.routes;
+      // استبعد NotFound وأي routes مش عايزها
+      this.links = allRoutes.filter((r) => r.name !== "NotFound");
     },
   },
   mounted() {
