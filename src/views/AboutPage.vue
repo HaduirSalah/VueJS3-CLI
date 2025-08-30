@@ -1,17 +1,24 @@
 <template>
   <h2>this is a about page</h2>
   <!-- <MyCard :students="students" /> -->
-  <button @click="isActive = !isActive">Change Active</button>
+  <!-- <button @click="isActive = !isActive">Change Active</button>
   <p>User status active is: {{ isActive }}</p>
-  <button @click="myArray.push('new Item')">add item</button>
+  <button @click="myArray.push('new Item')">add item</button> -->
+  <!-- <provide-inject name="Hadeer Salah" /> -->
+  <h1>age from parent {{ age }}</h1>
+  <button @click="age++">Increase Age</button>
+  <provide-inject />
 </template>
 <script>
 // import MyCard from "@/components/MyCard.vue";
+import ProvideInject from "@/components/ProvideInject.vue";
 export default {
   name: "AboutPage",
   components: {
     // MyCard,
+    ProvideInject,
   },
+
   data() {
     return {
       students: [
@@ -47,6 +54,23 @@ export default {
       isActive: false,
       myObject: { a: 1, b: 2, c: 3 },
       myArray: [1, 2, 3, 4, 5],
+      name: "Ahmed Salah",
+      age: 29,
+    };
+  },
+  methods: {
+    sayHello() {
+      console.log("Hello");
+    },
+  },
+  // provide: {
+  //   name: "Ahmed Salah",
+  // },
+  provide() {
+    return {
+      name: this.name,
+      age: this.age,
+      myFunction: this.sayHello,
     };
   },
   watch: {
