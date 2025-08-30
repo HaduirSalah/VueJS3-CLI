@@ -1,7 +1,11 @@
 <template>
   <nav class="navbar">
     <div class="logo">
-      <img src="@/assets/green-leaves-round-logo.png" :alt="logo" />
+      <img
+        src="@/assets/green-leaves-round-logo.png"
+        :alt="logo"
+        @click="emitEvent()"
+      />
     </div>
     <div class="links">
       <ul>
@@ -45,7 +49,11 @@ export default {
       links: [],
     };
   },
+  inject: ["emitter"],
   methods: {
+    emitEvent() {
+      this.emitter.emit("myEvent", this.logo);
+    },
     getRoutes() {
       console.log(this.$router.options.routes);
       const allRoutes = this.$router.options.routes;

@@ -2,8 +2,12 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
+// Emitter Configuration Globally
+import mitt from "mitt";
+const emitter = mitt();
+// Make the emitter available globally
 const vueApp = createApp(App);
-vueApp.use(router).mount("#app");
+vueApp.provide("emitter", emitter).use(router).mount("#app");
 
 vueApp.directive("maxSize", (el, order) => {
   el.style.fontSize = order.value + "px";

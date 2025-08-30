@@ -73,6 +73,12 @@ export default {
       myFunction: this.sayHello,
     };
   },
+  inject: ["emitter"],
+  mounted() {
+    this.emitter.on("myEvent", (data) => {
+      console.log(`data from about page global event bus`, data);
+    });
+  },
   watch: {
     isActive(newVal, oldVal) {
       console.log(`New: ${newVal}, Old: ${oldVal}`);
